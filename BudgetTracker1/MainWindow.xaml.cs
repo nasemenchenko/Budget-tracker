@@ -22,34 +22,17 @@ namespace BudgetTracker1
     /// </summary>
     public partial class MainWindow : Window
     {
-        Repository repository;
+
         public MainWindow()
         {
+            Repository repository;
+
+
             InitializeComponent();
             using (Context c = new Context())
                 repository = new Repository(c);
 
-            repository.onUserListChanged += Repository_onUserListChanged;
-        }
-
-        private void Repository_onUserListChanged()
-        {
-            ComboBoxChooseUser.Items.Clear();
-            ComboBoxChooseUser.SelectedIndex = 0;
-
-            foreach (var item in repository.Users)
-                ComboBoxChooseUser.Items.Add(item);
-        }
-
-        private void buttonAdd_Click(object sender, RoutedEventArgs e)
-        {
-            repository.AddUser(textBoxUserName.Text, textboxLocation.Text);
-           
-        }
-
-        private void DeleteButton_Click(object sender, RoutedEventArgs e)
-        {
-            repository.ClearUsersList();
+            ComboBoxChooseUser.ItemsSource = repository.User;
 
         }
     }

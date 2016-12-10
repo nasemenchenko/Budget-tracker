@@ -11,14 +11,5 @@ namespace Logic.Entity
         public int ID { get; set; }
         public string Name { get; set; }
         public string Location { get; set; }
-        public User()
-        {
-
-        }
-        public User(string name, string location)
-        {
-            Name = name;
-            Location = location;
-        }
     }
 }
