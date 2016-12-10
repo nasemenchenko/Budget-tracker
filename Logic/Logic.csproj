@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context.cs" />
+    <Compile Include="DbUpdater.cs" />
     <Compile Include="Entity\Budget.cs" />
     <Compile Include="Entity\Description.cs" />
     <Compile Include="Entity\User.cs" />

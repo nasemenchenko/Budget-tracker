@@ -9,39 +9,40 @@ namespace Logic
 {
     public class Repository
     {
-        public List<User> User { get; set; }
+        public event Action onUserListChanged;
+        public List<User> Users { get; set; }
         public List<Description> Description { get; set; }
         public List<Budget> Budget { get; set; }
-        Context c;
+        Context context;
         public Repository(Context c)
         {
             // using (var c = new Context())
             //   {
-            User = c.User.ToList();
+            context = c;
+            Users = c.User.ToList();
             Description = c.Description.ToList();
             Budget = c.Budget.ToList();
             // }
         }
-        private void AddUser(User user)
+        public void AddUser(User user)
         {
-            User.Add(user);
-
-
-            c.User.Add(user);
-            c.SaveChanges();
+            if (user == null) throw new Exception("ghjjdslds");
+            Users.Add(user);
+            DbUpdater.AddUser(user);
+            //  context.User.Add(user);
+            // context.SaveChanges();
 
         }
         public void AddUser(string name, string location)
         {
-            AddUser(new User { Name = name, Location = location });
+            AddUser(new User(name, location));
+            onUserListChanged?.Invoke();
         }
         public void ClearUsersList()
         {
-            //using (var c = new Context())
-            //{
-            c.User.RemoveRange(c.User);
-            c.SaveChanges();
-            //}
+            DbUpdater.ClearUsers();
+            Users.Clear();
+            onUserListChanged?.Invoke();
         }
     }
 }
