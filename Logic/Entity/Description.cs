@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Logic.Entity
 {
-    class Description
+    public class Description
     {
         public int ID { get; set; }
         public DateTime Date { get; set; }
-        public string TransactionType { get; set; }
-
+        public string TransactionName { get; set; }
+        public string TransactionComment { get; set; }
     }
 }
