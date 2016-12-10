@@ -26,6 +26,7 @@ namespace BudgetTracker1
         public MainWindow()
         {
             InitializeComponent();
+
             using (Context c = new Context())
                 repository = new Repository(c);
 
