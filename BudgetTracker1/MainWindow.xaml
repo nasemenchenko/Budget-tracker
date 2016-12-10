@@ -23,7 +23,7 @@
         <Label Grid.Row="1" Content="Location"/>
         <TextBox Name="textboxLocation" Grid.Row="1" VerticalAlignment="Center" Margin="0,29"/>
         <Button Grid.Column="1" Name="buttonAdd" Grid.RowSpan="2">Add new user</Button>
-        <ComboBox Grid.Row="2" Name="ComboBoxChooseUser" SelectedIndex="0" ></ComboBox>
+        <ComboBox DisplayMemberPath="Name"  Grid.Row="2" Name="ComboBoxChooseUser" SelectedIndex="0" ></ComboBox>
         <Button Name="ButtonShowUserData" Grid.Row="2" Grid.RowSpan="2" Grid.Column="1">Display user budget data</Button>
         <Button Name="ButtonAddRecord" Grid.Row="4" Grid.Column="1" Content="Add new budget information"/>
     </Grid>

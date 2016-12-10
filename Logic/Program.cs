@@ -13,10 +13,11 @@ namespace Logic
         {
             using (var c = new Context())
             {
+                c.User.ToArray();
                // c.User.ToList();
             }
-            Repository repo = new Repository();
-            repo.ClearUsersList(); // будет время, сделай удаление 1 юзера
+           // Repository repo = new Repository();
+            // будет время, сделай удаление 1 юзера
         }
     }
 }

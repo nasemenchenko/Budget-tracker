@@ -7,28 +7,29 @@ using System.Threading.Tasks;
 
 namespace Logic
 {
-   public class Repository
+    public class Repository
     {
         public List<User> User { get; set; }
         public List<Description> Description { get; set; }
         public List<Budget> Budget { get; set; }
-        public Repository()
+        Context c;
+        public Repository(Context c)
         {
-            using (var c = new Context())
-            {
-                User = c.User.ToList();
-                Description = c.Description.ToList();
-                Budget = c.Budget.ToList();
-            }
+            // using (var c = new Context())
+            //   {
+            User = c.User.ToList();
+            Description = c.Description.ToList();
+            Budget = c.Budget.ToList();
+            // }
         }
         private void AddUser(User user)
         {
             User.Add(user);
-            using (var c = new Context())
-            {
-                c.User.Add(user);
-                c.SaveChanges();
-            }
+
+
+            c.User.Add(user);
+            c.SaveChanges();
+
         }
         public void AddUser(string name, string location)
         {
@@ -36,11 +37,11 @@ namespace Logic
         }
         public void ClearUsersList()
         {
-            using (var c = new Context())
-            {
-                c.User.RemoveRange(c.User);
-                c.SaveChanges();
-            }
+            //using (var c = new Context())
+            //{
+            c.User.RemoveRange(c.User);
+            c.SaveChanges();
+            //}
         }
     }
 }
