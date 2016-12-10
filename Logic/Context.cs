@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace Logic
 {
-    class Context : DbContext
+    public class Context : DbContext
     {
-        DbSet<Budget> Budget;
-        DbSet<Description> Description;
-        DbSet<User> User;
+        public DbSet<Budget> Budget { get; set; }
+        public DbSet<Description> Description { get; set; }
+        public DbSet<User> User { get; set; }
         public Context() : base("localsql")
         {
 
