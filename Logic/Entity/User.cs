@@ -20,5 +20,9 @@ namespace Logic.Entity
             Name = name;
             Location = location;
         }
+        public override string ToString()
+        {
+            return string.Format("{0} from {1}", Name, Location);
+        }
     }
 }

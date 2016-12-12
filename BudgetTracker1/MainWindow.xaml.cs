@@ -1,5 +1,6 @@
 ﻿//using Logic;
 using Logic;
+using Logic.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,8 @@ namespace BudgetTracker1
             using (Context c = new Context())
                 repository = new Repository(c);
 
+            foreach (var item in repository.Users)
+                ComboBoxChooseUser.Items.Add(item);
             repository.onUserListChanged += Repository_onUserListChanged;
         }
 
@@ -45,6 +48,8 @@ namespace BudgetTracker1
         private void buttonAdd_Click(object sender, RoutedEventArgs e)
         {
             repository.AddUser(textBoxUserName.Text, textboxLocation.Text);
+            textBoxUserName.Clear();
+            textboxLocation.Clear();
            
         }
 
@@ -52,6 +57,12 @@ namespace BudgetTracker1
         {
             repository.ClearUsersList();
 
+        }
+
+        private void ButtonShowUserData_Click(object sender, RoutedEventArgs e)
+        {
+            UserBudgetInformation user = new UserBudgetInformation(ComboBoxChooseUser.SelectedItem, repository.Budget.FindAll(u=>u.User==ComboBoxChooseUser.SelectedItem as User));
+            user.ShowDialog();
         }
     }
 }
