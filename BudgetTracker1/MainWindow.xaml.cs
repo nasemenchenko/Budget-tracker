@@ -64,5 +64,11 @@ namespace BudgetTracker1
             UserBudgetInformation user = new UserBudgetInformation(ComboBoxChooseUser.SelectedItem, repository.Budget.FindAll(u=>u.User==ComboBoxChooseUser.SelectedItem as User));
             user.ShowDialog();
         }
+
+        private void ButtonAddRecord_Click(object sender, RoutedEventArgs e)
+        {
+            NewTransactions transactions = new NewTransactions();
+            transactions.ShowDialog();
+        }
     }
 }

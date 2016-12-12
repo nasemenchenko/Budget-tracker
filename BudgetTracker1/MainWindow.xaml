@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BudgetTracker1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="BudgetTracker" Height="350" Width="525">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -26,6 +26,6 @@
         <Button Name="DeleteButton" Grid.Row="1" Grid.Column="1" Click="DeleteButton_Click">Delete all records</Button>
         <ComboBox DisplayMemberPath="Name"  Grid.Row="2" Name="ComboBoxChooseUser" SelectedIndex="0" ></ComboBox>
         <Button Name="ButtonShowUserData" Grid.Row="2" Grid.RowSpan="2" Grid.Column="1" Click="ButtonShowUserData_Click">Display user budget data</Button>
-        <Button Name="ButtonAddRecord" Grid.Row="4" Grid.Column="1" Content="Add new budget information"/>
+        <Button Name="ButtonAddRecord" Grid.Row="4" Grid.Column="1" Content="Add new budget information" Click="ButtonAddRecord_Click"/>
     </Grid>
 </Window>
