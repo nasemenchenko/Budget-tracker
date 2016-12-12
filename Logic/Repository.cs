@@ -9,6 +9,7 @@ namespace Logic
 {
     public class Repository
     {
+
         public event Action onUserListChanged;
         public List<User> Users { get; set; }
         public List<Description> Description { get; set; }

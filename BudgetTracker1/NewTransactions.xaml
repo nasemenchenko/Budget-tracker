@@ -19,11 +19,13 @@
             <RowDefinition Height="70*"/>
         </Grid.RowDefinitions>
         <Label Name="UserName" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left"/>
-        <Label Content="Type of transactions" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2"/>
-        <CheckBox Name="CheckBoxTransact" IsChecked="True" Grid.Column="0" Grid.Row="2" Content="Income"/>
-        <Label Content="Enter description:" Grid.Column="0" Grid.Row="3"/>
+        <Label Content="Type of transactions:" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center"/>
+        <ComboBox Name="ComboBoxTypeOfTransaction" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" SelectionChanged="ComboBoxTypeOfTransaction_SelectionChanged" SelectedIndex="0"/>
+        <Label Content="Enter description:" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Center"/>
         <TextBox Name="DescriptionName" Grid.Column="0" Grid.Row="4"/>
-        <Label Content="Transaction name" Grid.Column="1" Grid.Row="1"/>
-        <ComboBox Name="ComboBoxTypeTransaction" Grid.Column="1" Grid.Row="2"/>        
+        <Label Content="Transaction name:" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center"/>
+        <ComboBox Name="ComboBoxTransactionName" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" SelectionChanged="ComboBoxTransactionName_SelectionChanged"/>
+        <Label Content="How much" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center"/>
+        <TextBox Name="TextBoxMoney" Grid.Column="1" Grid.Row="4" />
     </Grid>
 </Window>

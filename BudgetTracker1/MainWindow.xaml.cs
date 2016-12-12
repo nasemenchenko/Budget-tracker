@@ -67,7 +67,7 @@ namespace BudgetTracker1
 
         private void ButtonAddRecord_Click(object sender, RoutedEventArgs e)
         {
-            NewTransactions transactions = new NewTransactions();
+            NewTransactions transactions = new NewTransactions(ComboBoxChooseUser.SelectedItem, repository.Budget.FindAll(u => u.User == ComboBoxChooseUser.SelectedItem as User));
             transactions.ShowDialog();
         }
     }
