@@ -1,0 +1,35 @@
+﻿<Window x:Class="BudgetTracker1.NewTransactions"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BudgetTracker1"
+        mc:Ignorable="d"
+        Title="NewTransactions" Height="300" Width="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Label Name="UserName" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" FontSize="30" Margin="10,0" Width="120"/>
+        <Label Content="Type of transactions:" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" Margin="14,0"/>
+        <ComboBox Name="ComboBoxTypeOfTransaction" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" SelectionChanged="ComboBoxTypeOfTransaction_SelectionChanged" SelectedIndex="0" Margin="0,40"/>
+        <Label Content="Enter description:" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Center" Margin="22,0"/>
+        <TextBox Name="DescriptionName" Grid.Column="0" Grid.Row="4" Grid.RowSpan="2"/>
+        <Label Content="Transaction name:" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" Margin="20,0"/>
+        <ComboBox Name="ComboBoxTransactionName" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" SelectionChanged="ComboBoxTransactionName_SelectionChanged" Margin="0,40"/>
+        <Label Content="How much:" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center" Margin="38,0"/>
+
+        <TextBox Name="TextBoxMoney" Grid.Column="1" Grid.Row="4" />
+        <Button Name="ButtomAdd" Grid.Column="1" Grid.Row="5" Content="Add transartion"/>
+
+    </Grid>
+</Window>
