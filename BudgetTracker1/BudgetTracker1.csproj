@@ -64,13 +64,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Windows\NewTransactions.xaml.cs">
+    <Compile Include="NewTransactions.xaml.cs">
       <DependentUpon>NewTransactions.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\UserBudgetInformation.xaml.cs">
+    <Compile Include="UserBudgetInformation.xaml.cs">
       <DependentUpon>UserBudgetInformation.xaml</DependentUpon>
     </Compile>
-    <Page Include="Windows\MainWindow.xaml">
+    <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -78,15 +78,15 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Windows\MainWindow.xaml.cs">
+    <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Windows\NewTransactions.xaml">
+    <Page Include="NewTransactions.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\UserBudgetInformation.xaml">
+    <Page Include="UserBudgetInformation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -124,6 +124,9 @@
       <Project>{e221d88d-697a-4148-bfed-6615350ed3de}</Project>
       <Name>Logic</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Windows\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

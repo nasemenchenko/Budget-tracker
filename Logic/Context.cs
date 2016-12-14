@@ -15,7 +15,7 @@ namespace Logic
         public DbSet<User> User { get; set; }
         public Context() : base("localsql")
         {
-
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<Context>());
         }
 
     }

@@ -50,7 +50,7 @@ namespace BudgetTracker1
             repository.AddUser(textBoxUserName.Text, textboxLocation.Text);
             textBoxUserName.Clear();
             textboxLocation.Clear();
-           
+
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
@@ -61,13 +61,13 @@ namespace BudgetTracker1
 
         private void ButtonShowUserData_Click(object sender, RoutedEventArgs e)
         {
-            UserBudgetInformation user = new UserBudgetInformation(ComboBoxChooseUser.SelectedItem, repository.Budget.FindAll(u=>u.User==ComboBoxChooseUser.SelectedItem as User));
+            UserBudgetInformation user = new UserBudgetInformation(ComboBoxChooseUser.SelectedItem, repository.Budget.FindAll(u => u.User.Name == (ComboBoxChooseUser.SelectedItem as User).Name));
             user.ShowDialog();
         }
 
         private void ButtonAddRecord_Click(object sender, RoutedEventArgs e)
         {
-            NewTransactions transactions = new NewTransactions(ComboBoxChooseUser.SelectedItem, repository.Budget.FindAll(u => u.User == ComboBoxChooseUser.SelectedItem as User));
+            NewTransactions transactions = new NewTransactions(ComboBoxChooseUser.SelectedItem, repository.Budget.FindAll(u => u.User == ComboBoxChooseUser.SelectedItem as User), repository);
             transactions.ShowDialog();
         }
     }

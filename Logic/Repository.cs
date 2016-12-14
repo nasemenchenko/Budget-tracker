@@ -25,7 +25,7 @@ namespace Logic
             Budget = c.Budget.ToList();
             // }
         }
-        public void AddUser(User user)
+        private void AddUser(User user)
         {
             if (user == null) throw new Exception("ghjjdslds");
             Users.Add(user);
@@ -38,6 +38,37 @@ namespace Logic
         {
             AddUser(new User(name, location));
             onUserListChanged?.Invoke();
+        }
+        private void AddTransaction(Budget budget)
+        {
+            if (budget == null) throw new Exception("");
+            Budget.Add(budget);
+            DbUpdater.AddTransaction(budget);
+        }
+        public void AddTransaction(string name, string transactionName, bool transactionType, decimal sum, string transactionComment)
+        {
+            User user = SearchUserByName(name);
+            AddTransaction(new Budget()
+            {
+                User = user,
+                Description = new Description()
+                {
+                    TransactionName = transactionName,
+                    TransactionComment = transactionComment,
+                    TransactionSum=sum,
+                    Date = DateTime.Now
+                },
+                TransactionType = transactionType
+            }
+                );
+
+            
+            }
+
+        public User SearchUserByName(string name)
+        {
+            return Users.Find(u => u.Name == name);
+
         }
         public void ClearUsersList()
         {

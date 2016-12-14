@@ -12,5 +12,6 @@ namespace Logic.Entity
         public DateTime Date { get; set; }
         public string TransactionName { get; set; }
         public string TransactionComment { get; set; }
+        public decimal TransactionSum { get; set; }
     }
 }

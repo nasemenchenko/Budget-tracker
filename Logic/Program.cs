@@ -13,7 +13,10 @@ namespace Logic
         {
             using (var c = new Context())
             {
+                c.Budget.ToList();
                 c.User.ToArray();
+                c.Budget.ToList();
+                
                // c.User.ToList();
             }
            // Repository repo = new Repository();

@@ -19,17 +19,17 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        <Label Name="UserName" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" FontSize="30" Margin="10,0" Width="120"/>
+        <Label Name="LabelUserName" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" FontSize="30" Margin="10,0" Width="120"/>
         <Label Content="Type of transactions:" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" Margin="14,0"/>
-        <ComboBox Name="ComboBoxTypeOfTransaction" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" SelectionChanged="ComboBoxTypeOfTransaction_SelectionChanged" SelectedIndex="0" Margin="0,40"/>
-        <Label Content="Enter description:" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Center" Margin="22,0"/>
+        <ComboBox Name="ComboBoxTypeOfTransaction" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" SelectionChanged="ComboBoxTypeOfTransaction_SelectionChanged" SelectedIndex="0" />
+        <Label Content="Enter description:" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Center"/>
         <TextBox Name="DescriptionName" Grid.Column="0" Grid.Row="4" Grid.RowSpan="2"/>
-        <Label Content="Transaction name:" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" Margin="20,0"/>
-        <ComboBox Name="ComboBoxTransactionName" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" SelectionChanged="ComboBoxTransactionName_SelectionChanged" Margin="0,40"/>
+        <Label Content="Transaction name:" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center"/>
+        <ComboBox Name="ComboBoxTransactionName" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" SelectionChanged="ComboBoxTransactionName_SelectionChanged"  SelectedIndex="0"/>
         <Label Content="How much:" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center" Margin="38,0"/>
 
         <TextBox Name="TextBoxMoney" Grid.Column="1" Grid.Row="4" />
-        <Button Name="ButtomAdd" Grid.Column="1" Grid.Row="5" Content="Add transartion"/>
+        <Button Name="ButtomAdd" Grid.Column="1" Grid.Row="4" Content="Add transaction" Click="ButtomAdd_Click" Margin="0,44,0,1" Grid.RowSpan="2"/>
 
     </Grid>
 </Window>

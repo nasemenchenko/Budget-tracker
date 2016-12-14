@@ -18,6 +18,15 @@ namespace Logic
             }
 
         }
+        public static void AddTransaction(Budget budget)
+        {
+            using (var c = new Context())
+            {
+                c.Budget.Add(budget);
+                c.SaveChanges();
+            }   
+        }
+
         public static void ClearUsers()
         {
 

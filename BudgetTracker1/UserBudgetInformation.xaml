@@ -11,7 +11,8 @@
             <RowDefinition Height="1*"></RowDefinition>
             <RowDefinition Height="4*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Label Grid.Row="0" Name="UserLabel" FontSize="30" HorizontalAlignment="Center"></Label>
+        <Label Grid.Row="0" Name="UserLabel" FontSize="30" HorizontalAlignment="Center"/>
+        <Label Name="LabelSum" Grid.Row="0" HorizontalAlignment="Right"/>
         <DataGrid Grid.Row="1" Name="DataGridBudgetInfo"></DataGrid>
     </Grid>
 </Window>

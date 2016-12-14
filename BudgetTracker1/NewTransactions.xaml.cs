@@ -23,15 +23,15 @@ namespace BudgetTracker1
     {
         private List<Budget> _list;
         User _user;
-        // Repository repository;
-        public NewTransactions(object user, List<Budget> list)
+        Repository repository;
+        public NewTransactions(object user, List<Budget> list, Repository repo)
         {
             InitializeComponent();
             Fill_ComboBoxTypeOfTransaction();         
             _user = user as User;
             _list = list;
-            UserName.Content = _user.Name;
-
+            LabelUserName.Content = _user.Name;
+            repository = repo;
         }
 
        
@@ -78,6 +78,12 @@ namespace BudgetTracker1
             ComboBoxTransactionName.Items.Add("Leisure/Rest");
             ComboBoxTransactionName.Items.Add("Internet");
             ComboBoxTransactionName.Items.Add("Smartphone");
+        }
+
+        private void ButtomAdd_Click(object sender, RoutedEventArgs e)
+        {
+            // bool tmp = ComboBoxTypeOfTransaction.SelectedIndex == 0;
+            repository.AddTransaction(LabelUserName.Content.ToString(), ComboBoxTransactionName.SelectedItem.ToString(), ComboBoxTypeOfTransaction.SelectedIndex == 0, decimal.Parse(TextBoxMoney.Text), DescriptionName.Text);
         }
     }
 }

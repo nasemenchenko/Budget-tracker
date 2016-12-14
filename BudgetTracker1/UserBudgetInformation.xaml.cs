@@ -23,7 +23,7 @@ namespace BudgetTracker1
         User _user;
         public UserBudgetInformation(object user, List<Budget> budget)
         {
-            
+
             InitializeComponent();
             _user = user as User;
             UserLabel.Content = _user.Name;
@@ -36,8 +36,13 @@ namespace BudgetTracker1
                                                  Comment = b.Description.TransactionComment,
                                                  DateOfTransaction = b.Description.Date.ToShortDateString(),
                                                  TimeOfTransaction = b.Description.Date.ToShortTimeString(),
-                                                 Type = b.TransactionType?"Income":"Outcome"
+                                                 Type = b.TransactionType ? "Income" : "Outcome",
+                                                 Sum = b.Description.TransactionSum
+
                                              };
+            decimal sum = 0;
+            budget.ForEach(item => sum += (item.Description.TransactionSum) * ((item.TransactionType) ? 1 : -1));
+            LabelSum.Content = sum.ToString();
         }
     }
 }
