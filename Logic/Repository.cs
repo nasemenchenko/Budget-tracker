@@ -27,8 +27,10 @@ namespace Logic
         }
         private void AddUser(User user)
         {
-            if (user == null) throw new Exception("ghjjdslds");
-            Users.Add(user);
+            if (SearchUserByName(user.Name) != null)
+                throw new Exception("(: This name exists! Please, choose another one :)");
+            else
+                Users.Add(user);
             DbUpdater.AddUser(user);
             //  context.User.Add(user);
             // context.SaveChanges();
@@ -36,12 +38,14 @@ namespace Logic
         }
         public void AddUser(string name, string location)
         {
-            AddUser(new User(name, location));
+            if (!String.IsNullOrWhiteSpace(name))
+                AddUser(new User(name, location));
+            else throw new Exception("Please, enter the name:)");
             onUserListChanged?.Invoke();
         }
         private void AddTransaction(Budget budget)
         {
-            if (budget == null) throw new Exception("");
+           
             Budget.Add(budget);
             DbUpdater.AddTransaction(budget);
         }
@@ -55,15 +59,15 @@ namespace Logic
                 {
                     TransactionName = transactionName,
                     TransactionComment = transactionComment,
-                    TransactionSum=sum,
+                    TransactionSum = sum,
                     Date = DateTime.Now
                 },
                 TransactionType = transactionType
             }
                 );
 
-            
-            }
+
+        }
 
         public User SearchUserByName(string name)
         {
@@ -74,7 +78,26 @@ namespace Logic
         {
             DbUpdater.ClearUsers();
             Users.Clear();
+            Description.Clear();
+            Budget.Clear();
             onUserListChanged?.Invoke();
         }
+        private void DeleteUser(User user)
+        {
+            Users.Remove(user);
+            var dlist = from b in Budget.FindAll(d => d.User == user) select b.Description;
+
+            dlist.ToList().ForEach(d => Description.Remove(d));
+            Budget.RemoveAll(budget => budget.User == user);
+            DbUpdater.ClearUserInfo(user);
+          
+            onUserListChanged?.Invoke();
+        }
+        public void DeleteUser(string name)
+        {
+            User user = SearchUserByName(name);
+            DeleteUser(user);  
+        }
+
     }
 }

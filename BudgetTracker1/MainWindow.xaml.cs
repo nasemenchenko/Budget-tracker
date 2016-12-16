@@ -47,9 +47,16 @@ namespace BudgetTracker1
 
         private void buttonAdd_Click(object sender, RoutedEventArgs e)
         {
-            repository.AddUser(textBoxUserName.Text, textboxLocation.Text);
-            textBoxUserName.Clear();
-            textboxLocation.Clear();
+            try
+            {
+                repository.AddUser(textBoxUserName.Text, textboxLocation.Text);
+
+                textBoxUserName.Clear();
+                textboxLocation.Clear();
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error occured", MessageBoxButton.YesNo, MessageBoxImage.Error);
+            }
 
         }
 
@@ -61,14 +68,31 @@ namespace BudgetTracker1
 
         private void ButtonShowUserData_Click(object sender, RoutedEventArgs e)
         {
-            UserBudgetInformation user = new UserBudgetInformation(ComboBoxChooseUser.SelectedItem, repository.Budget.FindAll(u => u.User.Name == (ComboBoxChooseUser.SelectedItem as User).Name));
-            user.ShowDialog();
+            var test = repository.Budget.FindAll(u => u.User.Name == (ComboBoxChooseUser.SelectedItem as User).Name);
+            if (ComboBoxChooseUser.SelectedItem == null)
+                MessageBox.Show("Please, add the new user");
+            else
+            {
+                UserBudgetInformation user = new UserBudgetInformation(ComboBoxChooseUser.SelectedItem, repository.Budget.FindAll(u => u.User.Name == (ComboBoxChooseUser.SelectedItem as User).Name));
+                user.ShowDialog();
+            }
         }
 
         private void ButtonAddRecord_Click(object sender, RoutedEventArgs e)
         {
             NewTransactions transactions = new NewTransactions(ComboBoxChooseUser.SelectedItem, repository.Budget.FindAll(u => u.User == ComboBoxChooseUser.SelectedItem as User), repository);
             transactions.ShowDialog();
+        }
+
+        private void ButtonDeleteOneUser_Click(object sender, RoutedEventArgs e)
+        {
+          
+                repository.DeleteUser((ComboBoxChooseUser.SelectedItem as User).Name);
+            //}
+            ////catch(Exception ex)
+            //{
+            //  //  MessageBox.Show(ex.Message);
+            //}
         }
     }
 }

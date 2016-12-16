@@ -14,9 +14,10 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="2*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
         <Label Grid.RowSpan="2">Name</Label>
         <TextBox Name="textBoxUserName" VerticalAlignment="Center" Margin="0,29"/>
@@ -27,5 +28,6 @@
         <ComboBox DisplayMemberPath="Name"  Grid.Row="2" Name="ComboBoxChooseUser" SelectedIndex="0" ></ComboBox>
         <Button Name="ButtonShowUserData" Grid.Row="2" Grid.RowSpan="2" Grid.Column="1" FontSize="20" Click="ButtonShowUserData_Click">Display user budget data</Button>
         <Button Name="ButtonAddRecord" Grid.Row="4" Grid.Column="1" Content="Add new budget information" FontSize="20" Click="ButtonAddRecord_Click"/>
+        <Button Name="ButtonDeleteOneUser" Grid.Row="5" Grid.Column="1" FontSize="20" Click="ButtonDeleteOneUser_Click">Delete Records about chosen user</Button>
     </Grid>
 </Window>

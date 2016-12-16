@@ -12,7 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using System.Windows.Forms.DataVisualization.Charting;
 namespace BudgetTracker1
 {
     /// <summary>
@@ -21,11 +21,13 @@ namespace BudgetTracker1
     public partial class UserBudgetInformation : Window
     {
         User _user;
+        List<Budget> _budget;
         public UserBudgetInformation(object user, List<Budget> budget)
         {
 
             InitializeComponent();
             _user = user as User;
+            _budget = budget;            
             UserLabel.Content = _user.Name;
             DataGridBudgetInfo.ItemsSource = from b in budget
                                              select new
@@ -41,8 +43,58 @@ namespace BudgetTracker1
 
                                              };
             decimal sum = 0;
+            CreateChart();
             budget.ForEach(item => sum += (item.Description.TransactionSum) * ((item.TransactionType) ? 1 : -1));
+
             LabelSum.Content = sum.ToString();
+        }
+        private void CreateChart()
+        {
+            ChartBudgetView.ChartAreas.Add(new ChartArea("BudgetChartArea"));
+            ChartBudgetView.Series.Add(new Series("BudgetChart"));
+            ChartBudgetView.Series["BudgetChart"].ChartArea = "BudgetChartArea";
+            ChartBudgetView.Series["BudgetChart"].ChartType = SeriesChartType.Pie;
+
+
+        }
+        private void FillCostsChart(List<Budget> budgets ,bool transactionType)
+        {
+
+           
+
+            var listCostsData = budgets.FindAll(transaction => transaction.TransactionType == transactionType);
+            var list3 = (from item in listCostsData
+                         group item by item.Description.TransactionName into l
+                         select l).ToList();
+            List<decimal> list1 = new List<decimal>();
+            List<string> list2 = new List<string>();
+
+            list3.ForEach(
+                item =>
+                {
+                    list2.Add(item.Key);
+                    list1.Add(item.Sum(i => i.Description.TransactionSum));
+                });
+            ChartBudgetView.Series["BudgetChart"].Points.DataBindXY(list2, list1);
+
+        }
+        private void buttonShowChart_Click(object sender, RoutedEventArgs e)
+        {
+            if (BudgetCanvas.Visibility == Visibility.Hidden)
+            {
+                SpChoiceTransactionType.Visibility = Visibility.Hidden;
+                BudgetCanvas.Visibility = Visibility.Visible;
+                DataGridBudgetInfo.Visibility = Visibility.Hidden;
+                buttonShowChart.Content = "Show budget table";
+                FillCostsChart(_budget, RBtransactiontype.IsChecked.Value);
+            }
+            else
+            {
+                SpChoiceTransactionType.Visibility = Visibility.Visible;
+                BudgetCanvas.Visibility = Visibility.Hidden;
+                DataGridBudgetInfo.Visibility = Visibility.Visible;
+                buttonShowChart.Content = "Show budget chart";
+            }
         }
     }
 }

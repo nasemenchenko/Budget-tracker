@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Logic.Entity;
 using Logic;
+using System.Text.RegularExpressions;
 
 namespace BudgetTracker1
 {
@@ -82,8 +83,26 @@ namespace BudgetTracker1
 
         private void ButtomAdd_Click(object sender, RoutedEventArgs e)
         {
-            // bool tmp = ComboBoxTypeOfTransaction.SelectedIndex == 0;
-            repository.AddTransaction(LabelUserName.Content.ToString(), ComboBoxTransactionName.SelectedItem.ToString(), ComboBoxTypeOfTransaction.SelectedIndex == 0, decimal.Parse(TextBoxMoney.Text), DescriptionName.Text);
+            try
+            {
+                repository.AddTransaction(LabelUserName.Content.ToString(), ComboBoxTransactionName.SelectedItem.ToString(), ComboBoxTypeOfTransaction.SelectedIndex == 0, decimal.Parse(TextBoxMoney.Text), DescriptionName.Text);
+            }
+            catch(FormatException)
+            {
+               
+                MessageBox.Show("Please, provide correct value!", "Error occured", MessageBoxButton.YesNo, MessageBoxImage.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBoxButton mb = new MessageBoxButton();
+                
+                MessageBox.Show(ex.Message, "Error occured", MessageBoxButton.YesNo, MessageBoxImage.Error);
+            }
+        }
+
+        private void TextBoxMoney_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBoxMoney.Text = new Regex(@"[^\d +( \. +\d)]").Replace(TextBoxMoney.Text, "");
         }
     }
 }

@@ -3,16 +3,34 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:wfi="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
+        xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+        xmlns:dvc="clr-namespace:System.Windows.Forms.DataVisualization.Charting;assembly=System.Windows.Forms.DataVisualization"
         xmlns:local="clr-namespace:BudgetTracker1"
         mc:Ignorable="d"
         Title="User Budget Information" Height="300" Width="500" MinWidth="545">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="8*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"></RowDefinition>
             <RowDefinition Height="4*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Label Grid.Row="0" Name="UserLabel" FontSize="30" HorizontalAlignment="Center"/>
-        <Label Name="LabelSum" Grid.Row="0" HorizontalAlignment="Right"/>
-        <DataGrid Grid.Row="1" Name="DataGridBudgetInfo"></DataGrid>
+        <Label Grid.Row="0" Name="UserLabel" FontSize="30" HorizontalAlignment="Center" Margin="264,0,197,0"/>
+        <StackPanel Grid.Column="0" Name="SpChoiceTransactionType" HorizontalAlignment="Right">
+            <RadioButton Name="RBtransactiontype"  IsChecked="True">Income</RadioButton>
+            <RadioButton>Costs</RadioButton>
+
+        </StackPanel>
+        <Label Name="LabelSum" Grid.Row="0" HorizontalAlignment="Right" Grid.Column="1"/>
+        <Button Name="buttonShowChart" Content="Show ChartPie" Grid.Row="0" HorizontalAlignment="Left" Click="buttonShowChart_Click" />
+        <DataGrid Grid.Row="1" Name="DataGridBudgetInfo" Grid.ColumnSpan="2"  />
+        <StackPanel Grid.Row="1" Name="BudgetCanvas" Visibility="Hidden" Grid.ColumnSpan="2">
+            <WindowsFormsHost>
+                <dvc:Chart x:Name="ChartBudgetView"></dvc:Chart>
+            </WindowsFormsHost>
+        </StackPanel>
     </Grid>
 </Window>
