@@ -19,8 +19,7 @@ namespace Logic
                 
                // c.User.ToList();
             }
-           // Repository repo = new Repository();
-            // будет время, сделай удаление 1 юзера
+
         }
     }
 }
