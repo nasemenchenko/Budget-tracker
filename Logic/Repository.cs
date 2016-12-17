@@ -17,13 +17,12 @@ namespace Logic
         Context context;
         public Repository(Context c)
         {
-            // using (var c = new Context())
-            //   {
+           
             context = c;
             Users = c.User.ToList();
             Description = c.Description.ToList();
             Budget = c.Budget.ToList();
-            // }
+           
         }
         private void AddUser(User user)
         {
