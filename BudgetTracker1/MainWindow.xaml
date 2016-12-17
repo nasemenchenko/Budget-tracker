@@ -20,14 +20,14 @@
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
         <Label Grid.RowSpan="2">Name</Label>
-        <TextBox Name="textBoxUserName" VerticalAlignment="Center" Margin="0,29"/>
+        <TextBox Name="textBoxUserName" VerticalAlignment="Center"/>
         <Label Grid.Row="1" Content="Location"/>
-        <TextBox Name="textboxLocation" Grid.Row="1" VerticalAlignment="Center" Margin="0,29"/>
+        <TextBox Name="textboxLocation" Grid.Row="1" VerticalAlignment="Center"/>
         <Button Grid.Column="1" Name="buttonAdd" Grid.RowSpan="1" Click="buttonAdd_Click" FontSize="20">Add new user</Button>
         <Button Name="DeleteButton" Grid.Row="5" Grid.Column="1" Click="DeleteButton_Click" FontSize="20">Delete all records</Button>
         <ComboBox DisplayMemberPath="Name"  Grid.Row="2" Name="ComboBoxChooseUser" SelectedIndex="0" ></ComboBox>
         <Button Name="ButtonShowUserData" Grid.Row="2" Grid.RowSpan="2" Grid.Column="1" FontSize="20" Click="ButtonShowUserData_Click">Display user budget data</Button>
-        <Button Name="ButtonAddRecord" Grid.Row="1" Grid.Column="1" Content="Add new budget information" FontSize="20" Click="ButtonAddRecord_Click"/>
+        <Button Name="ButtonAddRecord" Content="Add new budget information" FontSize="20" Click="ButtonAddRecord_Click" Grid.Column="1" Grid.Row="1"/>
         <Button Name="ButtonDeleteOneUser" Grid.Row="4" Grid.Column="1" FontSize="20" Click="ButtonDeleteOneUser_Click">Delete Records about chosen user</Button>
     </Grid>
 </Window>

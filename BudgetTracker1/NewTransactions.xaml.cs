@@ -86,11 +86,14 @@ namespace BudgetTracker1
             try
             {
                 repository.AddTransaction(LabelUserName.Content.ToString(), ComboBoxTransactionName.SelectedItem.ToString(), ComboBoxTypeOfTransaction.SelectedIndex == 0, decimal.Parse(TextBoxMoney.Text), DescriptionName.Text);
+                DescriptionName.Clear();
+                TextBoxMoney.Clear();
+                MessageBox.Show("Trasaction is added:)");
             }
             catch(FormatException)
             {
                
-                MessageBox.Show("Please, provide correct value!", "Error occured", MessageBoxButton.YesNo, MessageBoxImage.Error);
+                MessageBox.Show("Please, provide correct value:)", "Error occured", MessageBoxButton.YesNo, MessageBoxImage.Error);
             }
             catch (Exception ex)
             {

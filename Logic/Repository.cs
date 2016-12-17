@@ -25,7 +25,7 @@ namespace Logic
         private void AddUser(User user)
         {
             if (SearchUserByName(user.Name) != null)
-                throw new Exception("(: This name exists! Please, choose another one :)");
+                throw new Exception("This name exists! Please, choose another one :)");
             else
                 Users.Add(user);
             DbUpdater.AddUser(user);

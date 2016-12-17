@@ -70,7 +70,7 @@ namespace BudgetTracker1
         {
 
             if (ComboBoxChooseUser.SelectedItem == null)
-                MessageBox.Show("Please, add the new user");
+                MessageBox.Show("Please, add the new user:)");
             else
             {
                 UserBudgetInformation user = new UserBudgetInformation(ComboBoxChooseUser.SelectedItem, repository.Budget.FindAll(u => ComboBoxChooseUser.SelectedItem != null && u.User.Name == ((User) ComboBoxChooseUser.SelectedItem).Name));
@@ -80,9 +80,13 @@ namespace BudgetTracker1
 
         private void ButtonAddRecord_Click(object sender, RoutedEventArgs e)
         {
-            
-            NewTransactions transactions = new NewTransactions(ComboBoxChooseUser.SelectedItem, repository.Budget.FindAll(u => ComboBoxChooseUser.SelectedItem != null && u.User == ComboBoxChooseUser.SelectedItem as User), repository);
-            transactions.ShowDialog();
+            if (ComboBoxChooseUser.SelectedItem == null)
+                MessageBox.Show("Please, add the new user:)");
+            else
+            {
+                NewTransactions transactions = new NewTransactions(ComboBoxChooseUser.SelectedItem, repository.Budget.FindAll(u => ComboBoxChooseUser.SelectedItem != null && u.User == ComboBoxChooseUser.SelectedItem as User), repository);
+                transactions.ShowDialog();
+            }
         }
 
         private void ButtonDeleteOneUser_Click(object sender, RoutedEventArgs e)
