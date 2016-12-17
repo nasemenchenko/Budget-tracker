@@ -68,26 +68,28 @@ namespace BudgetTracker1
 
         private void ButtonShowUserData_Click(object sender, RoutedEventArgs e)
         {
-            var test = repository.Budget.FindAll(u => u.User.Name == (ComboBoxChooseUser.SelectedItem as User).Name);
+
             if (ComboBoxChooseUser.SelectedItem == null)
                 MessageBox.Show("Please, add the new user");
             else
             {
-                UserBudgetInformation user = new UserBudgetInformation(ComboBoxChooseUser.SelectedItem, repository.Budget.FindAll(u => u.User.Name == (ComboBoxChooseUser.SelectedItem as User).Name));
+                UserBudgetInformation user = new UserBudgetInformation(ComboBoxChooseUser.SelectedItem, repository.Budget.FindAll(u => ComboBoxChooseUser.SelectedItem != null && u.User.Name == ((User) ComboBoxChooseUser.SelectedItem).Name));
                 user.ShowDialog();
             }
         }
 
         private void ButtonAddRecord_Click(object sender, RoutedEventArgs e)
         {
-            NewTransactions transactions = new NewTransactions(ComboBoxChooseUser.SelectedItem, repository.Budget.FindAll(u => u.User == ComboBoxChooseUser.SelectedItem as User), repository);
+            
+            NewTransactions transactions = new NewTransactions(ComboBoxChooseUser.SelectedItem, repository.Budget.FindAll(u => ComboBoxChooseUser.SelectedItem != null && u.User == ComboBoxChooseUser.SelectedItem as User), repository);
             transactions.ShowDialog();
         }
 
         private void ButtonDeleteOneUser_Click(object sender, RoutedEventArgs e)
         {
-          
-                repository.DeleteUser((ComboBoxChooseUser.SelectedItem as User).Name);
+            var user = ComboBoxChooseUser.SelectedItem as User;
+            if (user != null)
+                repository.DeleteUser(user.Name);
             //}
             ////catch(Exception ex)
             //{

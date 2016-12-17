@@ -24,5 +24,7 @@ namespace Logic.Entity
         {
             return string.Format("{0} from {1}", Name, Location);
         }
+
+        public virtual List<Budget> Budgets { get; set; }
     }
 }

@@ -14,11 +14,9 @@ namespace Logic
         public List<User> Users { get; set; }
         public List<Description> Description { get; set; }
         public List<Budget> Budget { get; set; }
-        Context context;
+
         public Repository(Context c)
         {
-           
-            context = c;
             Users = c.User.ToList();
             Description = c.Description.ToList();
             Budget = c.Budget.ToList();
