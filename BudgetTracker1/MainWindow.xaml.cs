@@ -73,7 +73,7 @@ namespace BudgetTracker1
                 MessageBox.Show("Please, add the new user:)");
             else
             {
-                UserBudgetInformation user = new UserBudgetInformation(ComboBoxChooseUser.SelectedItem, repository.Budget.FindAll(u => ComboBoxChooseUser.SelectedItem != null && u.User.Name == ((User) ComboBoxChooseUser.SelectedItem).Name));
+                UserBudgetInformation user = new UserBudgetInformation(ComboBoxChooseUser.SelectedItem, repository.Budget.FindAll(u => ComboBoxChooseUser.SelectedItem != null && u.User == ( ComboBoxChooseUser.SelectedItem as User)));
                 user.ShowDialog();
             }
         }
