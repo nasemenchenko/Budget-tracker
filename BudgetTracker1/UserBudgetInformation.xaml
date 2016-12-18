@@ -8,7 +8,7 @@
         xmlns:dvc="clr-namespace:System.Windows.Forms.DataVisualization.Charting;assembly=System.Windows.Forms.DataVisualization"
         xmlns:local="clr-namespace:BudgetTracker1"
         mc:Ignorable="d"
-        Title="User Budget Information" Height="300" Width="600" MinWidth="600">
+        Title="User Budget Information" Height="600" Width="600" MinWidth="600">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="8*"/>
@@ -16,9 +16,9 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="4*"></RowDefinition>
+            <RowDefinition Height="8*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Label Grid.Row="0" Name="UserLabel" FontSize="30" HorizontalAlignment="Center" Width="350"/>
+        <Label Grid.Row="0" Name="UserLabel" FontSize="30" HorizontalAlignment="Center" Width="310" Margin="128,0,88,0"/>
         <StackPanel Grid.Column="0" Name="SpChoiceTransactionType" HorizontalAlignment="Right">
             <RadioButton Name="RBtransactiontype"  IsChecked="True">Income</RadioButton>
             <RadioButton>Costs</RadioButton>
