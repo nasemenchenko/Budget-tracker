@@ -53,6 +53,7 @@ namespace BudgetTracker1
 
                 textBoxUserName.Clear();
                 textboxLocation.Clear();
+
             } catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error occured", MessageBoxButton.YesNo, MessageBoxImage.Error);
