@@ -89,17 +89,5 @@ namespace BudgetTracker1
                 transactions.ShowDialog();
             }
         }
-
-        private void ButtonDeleteOneUser_Click(object sender, RoutedEventArgs e)
-        {
-            var user = ComboBoxChooseUser.SelectedItem as User;
-            if (user != null)
-                repository.DeleteUser(user.Name);
-            //}
-            ////catch(Exception ex)
-            //{
-            //  //  MessageBox.Show(ex.Message);
-            //}
-        }
     }
 }

@@ -18,7 +18,7 @@
             <RowDefinition Height="1*"></RowDefinition>
             <RowDefinition Height="8*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Label Grid.Row="0" Name="UserLabel" FontSize="30" HorizontalAlignment="Center" Width="310" Margin="128,0,88,0"/>
+        <Label Grid.Row="0" Name="UserLabel" FontSize="20" HorizontalAlignment="Center" Width="310" Margin="128,0,88,0"/>
         <StackPanel Grid.Column="0" Name="SpChoiceTransactionType" HorizontalAlignment="Right">
             <RadioButton Name="RBtransactiontype"  IsChecked="True">Income</RadioButton>
             <RadioButton>Costs</RadioButton>

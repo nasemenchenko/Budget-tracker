@@ -46,7 +46,7 @@ namespace Logic
             Budget.Add(budget);
             DbUpdater.AddTransaction(budget);
         }
-        public void AddTransaction(string name, string transactionName, DateTime date, bool transactionType, decimal sum, string transactionComment)
+        public void AddTransaction(string name, string transactionName, bool transactionType, decimal sum, string transactionComment)
         {
             User user = SearchUserByName(name);
             AddTransaction(new Budget()
@@ -57,7 +57,7 @@ namespace Logic
                     TransactionName = transactionName,
                     TransactionComment = transactionComment,
                     TransactionSum = sum,
-                    Date = date
+                    Date = DateTime.Now
                 },
                 TransactionType = transactionType
             }
@@ -79,23 +79,7 @@ namespace Logic
             Budget.Clear();
             onUserListChanged?.Invoke();
         }
-        private void DeleteUser(User user)
-        {
-            Users.Remove(user);
-            var dlist = from b in Budget.FindAll(d => d.User == user) select b.Description;
 
-            dlist.ToList().ForEach(d => Description.Remove(d));
-            Budget.RemoveAll(budget => budget.User == user);
-            DbUpdater.ClearUserInfo(user);
-          
-            onUserListChanged?.Invoke();
-        }
-        public void DeleteUser(string name)
-        {
-            User user = SearchUserByName(name);
-            DeleteUser(user);  
-            //
-        }
 
     }
 }

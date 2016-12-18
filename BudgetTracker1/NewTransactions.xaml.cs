@@ -28,13 +28,13 @@ namespace BudgetTracker1
         public NewTransactions(object user, List<Budget> list, Repository repo)
         {
             InitializeComponent();
-            datepicker.SelectedDate = DateTime.Now;
+            
             Fill_ComboBoxTypeOfTransaction();         
             _user = user as User;
             _list = list;
             LabelUserName.Content = _user.Name;
             repository = repo;
-            datepicker.SelectedDate = DateTime.Now;
+         
         }
 
        
@@ -87,7 +87,7 @@ namespace BudgetTracker1
         {
             try
             {
-                repository.AddTransaction(LabelUserName.Content.ToString(), ComboBoxTransactionName.SelectedItem.ToString(), datepicker.SelectedDate.Value, ComboBoxTypeOfTransaction.SelectedIndex == 0, decimal.Parse(TextBoxMoney.Text), DescriptionName.Text);
+                repository.AddTransaction(LabelUserName.Content.ToString(), ComboBoxTransactionName.SelectedItem.ToString(), ComboBoxTypeOfTransaction.SelectedIndex == 0, decimal.Parse(TextBoxMoney.Text), DescriptionName.Text);
                 DescriptionName.Clear();
                 TextBoxMoney.Clear();
                 MessageBox.Show("Trasaction is added:)");

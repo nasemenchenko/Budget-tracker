@@ -42,24 +42,6 @@ namespace Logic
             }
         }
 
-        public static void ClearUserInfo(User user)
-        {
-            using (Context c = new Context())
-            {
-                var dlist = from b in c.Budget.ToList().FindAll(d => d.User == user) select b.Description;
-
-                //dlist.ToList().ForEach(d => c.Description.Remove(d));
-                var blist = from b in c.Budget.ToList().FindAll(bud => bud.User == user) select b;
-                foreach (Budget budget in blist)
-                {
-                    c.Entry(budget).State = EntityState.Deleted;
-                }
-                c.Entry(user).State = EntityState.Deleted;
-                //c.Budget.RemoveRange(blist);
-                c.Description.RemoveRange(dlist);
-               
-                c.SaveChanges();
-            }
-        }
+   
     }
 }
