@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Forms.DataVisualization.Charting;
+using Logic;
+
 namespace BudgetTracker1
 {
     /// <summary>
@@ -20,33 +22,35 @@ namespace BudgetTracker1
     /// </summary>
     public partial class UserBudgetInformation : Window
     {
-        User _user;
-        List<Budget> _budget;
-        public UserBudgetInformation(object user, List<Budget> budget)
+         List<Budget> _budget;
+        public UserBudgetInformation(User user)
         {
 
             InitializeComponent();
-            _user = user as User;
-            _budget = budget;            
-            UserLabel.Content = _user.Name;
-            DataGridBudgetInfo.ItemsSource = from b in budget
-                                             select new
-                                             {
-                                                 Name = b.User.Name,
-                                                 Location = b.User.Location,
-                                                 TransactionName = b.Description.TransactionName,
-                                                 Comment = b.Description.TransactionComment,
-                                                 DateOfTransaction = b.Description.Date.ToShortDateString(),
-                                                 TimeOfTransaction = b.Description.Date.ToShortTimeString(),
-                                                 Type = b.TransactionType ? "Income" : "Outcome",
-                                                 Sum = b.Description.TransactionSum
+            using (Context c = new Context())
+            {
+                _budget = c.User.Single(u => u.Name == user.Name).Budgets;
 
-                                             };
-            decimal sum = 0;
-            CreateChart();
-            budget.ForEach(item => sum += (item.Description.TransactionSum) * ((item.TransactionType) ? 1 : -1));
+                UserLabel.Content = user.Name;
+                DataGridBudgetInfo.ItemsSource = from b in _budget
+                    select new
+                    {
+                        Name = user.Name,
+                        Location = user.Location,
+                        TransactionName = b.Description?.TransactionName,
+                        Comment = b.Description?.TransactionComment,
+                        DateOfTransaction = b.Description?.Date.ToShortDateString(),
+                        TimeOfTransaction = b.Description?.Date.ToShortTimeString(),
+                        Type = b.TransactionType ? "Income" : "Outcome",
+                        Sum = b.Description?.TransactionSum
 
-            LabelSum.Content = sum.ToString();
+                    };
+                decimal sum = 0;
+                CreateChart();
+                _budget.ForEach(item => sum += (item.Description.TransactionSum)*((item.TransactionType) ? 1 : -1));
+
+                LabelSum.Content = sum.ToString();
+            }
         }
         private void CreateChart()
         {

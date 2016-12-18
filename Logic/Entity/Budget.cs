@@ -13,7 +13,7 @@ namespace Logic.Entity
         
         [NotMapped]
         public User User { get; set; }
-        public Description Description { get; set; }
+        public virtual Description Description { get; set; }
         public bool TransactionType { get; set; } //+ или -
 
     }
