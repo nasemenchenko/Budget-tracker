@@ -50,9 +50,14 @@ namespace Logic
 
                 //dlist.ToList().ForEach(d => c.Description.Remove(d));
                 var blist = from b in c.Budget.ToList().FindAll(bud => bud.User == user) select b;
-                c.Budget.RemoveRange(blist);
-                c.Description.RemoveRange(dlist);
+                foreach (Budget budget in blist)
+                {
+                    c.Entry(budget).State = EntityState.Deleted;
+                }
                 c.Entry(user).State = EntityState.Deleted;
+                //c.Budget.RemoveRange(blist);
+                c.Description.RemoveRange(dlist);
+               
                 c.SaveChanges();
             }
         }
