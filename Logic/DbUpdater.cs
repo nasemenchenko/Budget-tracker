@@ -52,7 +52,7 @@ namespace Logic
                 var blist = from b in c.Budget.ToList().FindAll(bud => bud.User == user) select b;
                 c.Budget.RemoveRange(blist);
                 c.Description.RemoveRange(dlist);
-              //  c.Entry(user).State = EntityState.Deleted;
+                c.Entry(user).State = EntityState.Deleted;
                 c.SaveChanges();
             }
         }
