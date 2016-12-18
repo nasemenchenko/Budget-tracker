@@ -46,7 +46,7 @@ namespace Logic
             Budget.Add(budget);
             DbUpdater.AddTransaction(budget);
         }
-        public void AddTransaction(string name, string transactionName, bool transactionType, decimal sum, string transactionComment)
+        public void AddTransaction(string name, string transactionName, DateTime date, bool transactionType, decimal sum, string transactionComment)
         {
             User user = SearchUserByName(name);
             AddTransaction(new Budget()
@@ -57,7 +57,7 @@ namespace Logic
                     TransactionName = transactionName,
                     TransactionComment = transactionComment,
                     TransactionSum = sum,
-                    Date = DateTime.Now
+                    Date = date
                 },
                 TransactionType = transactionType
             }
