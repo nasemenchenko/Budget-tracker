@@ -94,6 +94,7 @@ namespace Logic
         {
             User user = SearchUserByName(name);
             DeleteUser(user);  
+            //
         }
 
     }
